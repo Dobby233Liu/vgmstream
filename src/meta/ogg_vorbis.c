@@ -701,6 +701,10 @@ static VGMSTREAM* _init_vgmstream_ogg_vorbis_config(STREAMFILE* sf, off_t start,
                  * loopTime nor have wrong granules though) */
                 force_seek = 1;
             }
+            else if (strstr(comment, "ANDROID_LOOP=") == comment) { /* Android Open Source Project ringtones */
+                loop_flag = strstr(strrchr(comment, '=')+1, "true");
+                loop_start = 0;
+            }
 
             /* Hatsune Miku Project DIVA games, though only 'Arcade Future Tone' has >4ch files
              * ENCODER tag is common but ogg_vorbis_encode looks unique enough
