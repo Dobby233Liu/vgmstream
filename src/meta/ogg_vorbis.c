@@ -702,7 +702,7 @@ static VGMSTREAM* _init_vgmstream_ogg_vorbis_config(STREAMFILE* sf, off_t start,
                 force_seek = 1;
             }
             else if (strstr(comment, "ANDROID_LOOP=") == comment) { /* Android Open Source Project ringtones */
-                loop_flag = strstr(strrchr(comment, '=')+1, "true");
+                loop_flag = stricmp(strrchr(comment, '=')+1, "true") == 0;
                 loop_start = 0;
             }
 
